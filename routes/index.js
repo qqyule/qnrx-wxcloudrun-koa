@@ -2,9 +2,7 @@ const router = require("koa-router")();
 // const { init: initDB, Counter } = require("./db");
 
 router.get("/ping", async (ctx, next) => {
-  await ctx.render("index", {
-    title: "Tencent CloudBase + Koa",
-  });
+  ctx.body = 'Tencent CloudBase + Koa'
 });
 
 // router.post("/api/count", async (ctx) => {
