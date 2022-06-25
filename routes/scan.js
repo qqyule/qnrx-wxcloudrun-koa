@@ -2,7 +2,7 @@ const router = require("koa-router")();
 router.prefix('/v1')
 // 生成id插件
 var { v1: uuidV1 } = require('uuid')
-const { accessKeyId, accessKeySecret } = process.env;
+const { ACCESS_KEY_ID, ACCESS_KEY_SECRET } = process.env;
 
 // 阿里云文本检测sdk
 var greenNodejs = require('../utils/green-nodejs-invoker.js')
@@ -140,8 +140,8 @@ async function query(content) {
   })
 
   let bizCfg = {
-    accessKeyId: accessKeyId,
-    accessKeySecret: accessKeySecret,
+    accessKeyId: ACCESS_KEY_ID,
+    accessKeySecret: ACCESS_KEY_SECRET,
     path: path,
     clientInfo: clientInfo,
     requestBody: requestBody,
