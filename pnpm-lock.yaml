@@ -6,6 +6,7 @@ specifiers:
   koa-bodyparser: ^4.3.0
   koa-logger: ^3.2.1
   koa-router: ^10.1.1
+  koa2-cors: ^2.0.6
   mysql2: ^2.3.3
   sequelize: ^6.13.0
   uuid: ^8.3.2
@@ -16,6 +17,7 @@ dependencies:
   koa-bodyparser: 4.3.0
   koa-logger: 3.2.1
   koa-router: 10.1.1
+  koa2-cors: 2.0.6
   mysql2: 2.3.3
   sequelize: 6.21.0_mysql2@2.3.3
   uuid: 8.3.2
@@ -424,6 +426,11 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /koa2-cors/2.0.6:
+    resolution: {integrity: sha512-JRCcSM4lamM+8kvKGDKlesYk2ASrmSTczDtGUnIadqMgnHU4Ct5Gw7Bxt3w3m6d6dy3WN0PU4oMP43HbddDEWg==}
+    engines: {node: '>= 7.6.0'}
     dev: false
 
   /lodash/4.17.21:
