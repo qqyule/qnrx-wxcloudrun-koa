@@ -5,7 +5,10 @@ const { init: initDB } = require("./db");
 const cors = require('koa2-cors')
 const index = require('./routes/index')
 const scan = require('./routes/scan')
+const Sentry = require('@sentry/node')
+
 const app = new Koa();
+Sentry.init({ dsn: "https://0864f84df80940be93c156431d3113b7@o1082028.ingest.sentry.io/6549828" });
 app
   .use(logger())
   .use(bodyParser())
@@ -37,6 +40,14 @@ app.use(scan.routes(), scan.allowedMethods())
 const port = process.env.PORT || 80;
 async function bootstrap() {
   // await initDB();
+  app.on("error", (err, ctx) => {
+    Sentry.withScope(function (scope) {
+      scope.addEventProcessor(function (event) {
+        return Sentry.Handlers.parseRequest(event, ctx.request);
+      });
+      Sentry.captureException(err);
+    });
+  });
   app.listen(port, () => {
     console.log("启动成功", port);
   });
